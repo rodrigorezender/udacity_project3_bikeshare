@@ -21,6 +21,19 @@ def yes_or_no(phrase):
             print('Invalid choice! Please type "Yes" or "No".')
     return choice.lower()
 
+
+def print_first_5_lines(df):
+    """
+    Print the first lines from raw data.
+    """
+    choice = yes_or_no('Do you want to see 5 lines of raw data? (Yes / No)\n')
+    if choice == 'yes':
+        print('\nShowing first 5 lines of raw data:\n')
+        print(df.head(5))
+        input('Press enter to continue...')
+    print('Starting statistics calculations...\n')
+    
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -228,12 +241,7 @@ def main():
         print('Just a moment... loading data...\n')
         df = load_data(city, month, day)
         print('Data loaded.\n')
-        choice = yes_or_no('Do you want to see 5 lines of raw data? (Yes / No)\n')
-        if choice == 'yes':
-            print('\nShowing first 5 lines of raw data:\n')
-            print(df.head(5))
-            input('Press enter to continue...')
-        print('Starting statistics calculations...\n')
+        print_first_5_lines(df)
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
