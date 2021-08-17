@@ -7,7 +7,7 @@
 Udacity Bikeshare Project
 
 ### Description
-Describe what your project is about and what it does
+Udacity developed the project Bikeshare in the course Programming for Data Science in order to their students practice python and version control concepts. By using interactive interface in the python script, a user can choose between the cities Washington, New York city or Chicago and filter by weekday and/or month to refine the results made from statistical calculations from the data.
 
 ### Files used
 * chicago.csv
