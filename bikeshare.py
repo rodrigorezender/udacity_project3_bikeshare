@@ -32,7 +32,7 @@ def print_first_5_lines(df):
         print(df.head(5))
         input('Press enter to continue...')
     print('Starting statistics calculations...\n')
-    
+
 
 def get_filters():
     """
@@ -48,7 +48,7 @@ def get_filters():
 
     print('Hello! Let\'s explore some US bikeshare data!')
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    
+
     while True:
         city = input("\nWould you like to see data for Chicago, New York, or  Washington?\n").lower()
         if city in CITY_DATA.keys():
@@ -57,8 +57,8 @@ def get_filters():
             print("Invalid city name! Please choose one of the 3 cities.")
 
     # get user input for month (all, january, february, ... , june)
-    choice = yes_or_no('\nWould you like to filter the data by month? (Yes / No)\n')    
-    if choice == 'yes':        
+    choice = yes_or_no('\nWould you like to filter the data by month? (Yes / No)\n')
+    if choice == 'yes':
         while True:
             month = input("\nWhich month? January, February, March, April, May or June? Please type out the full month name.\n").title()
             if month in months:
@@ -97,6 +97,8 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
 
+    print('Just a moment... loading data...\n')
+
     # load data file into a dataframe
     df = pd.read_csv(CITY_DATA[city])
 
@@ -118,6 +120,8 @@ def load_data(city, month, day):
     if day != 'all':
         # filter by day of week to create the new dataframe
         df = df[df['day_of_week'] == day.title()]
+
+    print('Data loaded.\n')
 
     return df
 
@@ -190,15 +194,15 @@ def trip_duration_stats(df):
         days = hours // 24
         hours = hours % 24
         print(f'{days} days, {hours} hours and {minutes} minutes')
-    else: 
-        print(f'{hours} hours and {minutes} minutes') 
+    else:
+        print(f'{hours} hours and {minutes} minutes')
 
     # display mean travel time
     print('\nWhat is mean duration of all trips?')
     mean_duration = df['Trip Duration'].mean()
     minutes = mean_duration // 60
     seconds = mean_duration - minutes*60
-    print(f'{minutes:0.0f} minutes and {seconds:0.0f} seconds')    
+    print(f'{minutes:0.0f} minutes and {seconds:0.0f} seconds')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -238,9 +242,7 @@ def user_stats(df):
 def main():
     while True:
         city, month, day = get_filters()
-        print('Just a moment... loading data...\n')
         df = load_data(city, month, day)
-        print('Data loaded.\n')
         print_first_5_lines(df)
         time_stats(df)
         station_stats(df)
