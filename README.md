@@ -16,4 +16,8 @@ Udacity developed the project Bikeshare in the course Programming for Data Scien
 * bikeshare.py
 
 ### Credits
-https://pandas.pydata.org/
+* https://pandas.pydata.org
+* https://stackoverflow.com
+* https://git-scm.com/docs
+* https://guides.github.com
+* https://www.udacity.com
